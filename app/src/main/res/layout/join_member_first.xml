@@ -7,4 +7,96 @@
     android:layout_margin="30dp"
     tools:context=".JoinMemberFirst">
 
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:text="회 원 가 입"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:id="@+id/login"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/date"
+        android:layout_marginTop="30dp"
+        android:layout_alignTop= "@id/login"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:id="@+id/cal"
+            android:src="@drawable/calendar"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="태어난날을 선택해주세요"
+            android:baselineAlignBottom="true"
+            android:layout_marginLeft="10dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/date_1"
+        android:layout_below="@id/date"
+        android:layout_alignParentEnd="true" android:layout_marginTop="-29dp" android:layout_marginEnd="38dp">
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datepicker"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:layout_gravity="center"
+
+            android:layout_alignTop="@+id/date_1">
+
+        </DatePicker>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/date_1"
+        android:id="@+id/addrlayout"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_address"
+            android:text="새 주소 등록"
+            android:textSize="25dp"
+            android:textColor="#072121"
+            />
+        <EditText
+            android:id="@+id/et_address_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="주소 나머지 부분을 입력하세요"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="주소등록"
+            android:id="@+id/addressbtn"
+            />
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addrlayout"
+        android:id="@+id/nextPage"
+        android:text="다음 페이지"
+        android:gravity="center"
+        />
+
 </RelativeLayout>
