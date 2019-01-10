@@ -65,12 +65,12 @@
         android:layout_below="@id/date_1"
         android:id="@+id/addrlayout"
         >
-        <TextView
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/et_address"
-            android:text="새 주소 등록"
-            android:textSize="25dp"
+            android:hint="새 주소 등록"
+
             android:textColor="#072121"
             />
         <EditText
