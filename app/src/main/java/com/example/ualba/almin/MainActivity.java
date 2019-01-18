@@ -2,24 +2,26 @@ package com.example.ualba.almin;
 
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Log;
 
-        import com.amazonaws.mobile.config.AWSConfiguration;
-        import com.amazonaws.mobileconnectors.appsync.AWSAppSyncClient;
+        import com.amazonaws.mobile.client.AWSMobileClient;
+        import com.amazonaws.mobile.client.AWSStartupHandler;
+        import com.amazonaws.mobile.client.AWSStartupResult;
 
 public class MainActivity extends AppCompatActivity {
-
-    private AWSAppSyncClient mAWSAppSyncClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AWSMobileClient.getInstance().initialize(this, new AWSStartupHandler() {
+            @Override
+            public void onComplete(AWSStartupResult awsStartupResult) {
+                Log.d("YourMainActivity", "AWSMobileClient is instantiated and you are connected to AWS!");
+            }
+        }).execute();
+
         setContentView(R.layout.activity_main);
 
-        mAWSAppSyncClient = AWSAppSyncClient.builder()
-                .context(getApplicationContext())
-                .awsConfiguration(new AWSConfiguration(getApplicationContext()))
-                .build();
-
-        setContentView(R.layout.activity_main);
     }
 }
