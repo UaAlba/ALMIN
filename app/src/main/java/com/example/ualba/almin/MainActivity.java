@@ -7,21 +7,29 @@ package com.example.ualba.almin;
         import com.amazonaws.mobile.client.AWSMobileClient;
         import com.amazonaws.mobile.client.AWSStartupHandler;
         import com.amazonaws.mobile.client.AWSStartupResult;
+        import com.amazonaws.mobileconnectors.pinpoint.PinpointConfiguration;
+        import com.amazonaws.mobileconnectors.pinpoint.PinpointManager;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static PinpointManager pinpointManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        AWSMobileClient.getInstance().initialize(this, new AWSStartupHandler() {
-            @Override
-            public void onComplete(AWSStartupResult awsStartupResult) {
-                Log.d("YourMainActivity", "AWSMobileClient is instantiated and you are connected to AWS!");
-            }
-        }).execute();
-
         setContentView(R.layout.activity_main);
+
+        AWSMobileClient.getInstance().initialize(this).execute();
+
+        PinpointConfiguration config = new PinpointConfiguration(
+                MainActivity.this,
+                AWSMobileClient.getInstance().getCredentialsProvider(),
+                AWSMobileClient.getInstance().getConfiguration()
+        );
+        pinpointManager = new PinpointManager(config);
+        pinpointManager.getSessionClient().startSession();
+        pinpointManager.getAnalyticsClient().submitEvents();
 
     }
 }
+
