@@ -12,6 +12,11 @@
   "IdentityManager": {
     "Default": {}
   },
+  "DynamoDBObjectMapper": {
+    "Default": {
+      "Region": "us-east-1"
+    }
+  },
   "PinpointAnalytics": {
     "Default": {
       "AppId": "df133ea7b01f457aba8b82be73a772d7",
@@ -22,9 +27,5 @@
     "Default": {
       "Region": "us-east-1"
     }
-  },
-  "FacebookSignIn": {
-    "AppId": "ucdc9911",
-    "Permissions": "public_profile"
   }
 }
